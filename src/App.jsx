@@ -1,17 +1,17 @@
 import React, { useState, useEffect, useCallback, useMemo, useRef } from 'react'
 
-// --- Views ---
-import HomeScreen      from './components/HomeScreen'
-import SchedulePanel   from './components/SchedulePanel'
-import RankingsView    from './components/RankingsView'
-import TeamLookup      from './components/TeamLookup'
-import AllianceTracker from './components/AllianceTracker'
-import RobotChecklist  from './components/RobotChecklist'
-import MatchNotes      from './components/MatchNotes'
-import ScoutingView    from './components/ScoutingView'
-import OPRView         from './components/OPRView'
-import HeadToHead      from './components/HeadToHead'
-import PlayoffBracket  from './components/PlayoffBracket'
+// --- Views (commented out — battery app only for now) ---
+// import HomeScreen      from './components/HomeScreen'
+// import SchedulePanel   from './components/SchedulePanel'
+// import RankingsView    from './components/RankingsView'
+// import TeamLookup      from './components/TeamLookup'
+// import AllianceTracker from './components/AllianceTracker'
+// import RobotChecklist  from './components/RobotChecklist'
+// import MatchNotes      from './components/MatchNotes'
+// import ScoutingView    from './components/ScoutingView'
+// import OPRView         from './components/OPRView'
+// import HeadToHead      from './components/HeadToHead'
+// import PlayoffBracket  from './components/PlayoffBracket'
 
 // --- Battery view components ---
 import Header       from './components/Header'
@@ -37,7 +37,7 @@ import { isFirebaseConfigured } from './firebase'
 
 const DEFAULT_SETTINGS = {
   teamNumber:      '',
-  batteryCount:    6,
+  batteryCount:    9,
   chargeThreshold: 60,
   coolThreshold:   15,
   syncCode:        '',
@@ -96,10 +96,10 @@ export default function App() {
   } = useModals(activeView !== null ? goHome : undefined)
 
   // Navigate to a view, pushing history so browser back works
-  function navigate(view) {
-    window.history.pushState({ view }, '')
-    setActiveView(view)
-  }
+  // function navigate(view) {
+  //   window.history.pushState({ view }, '')
+  //   setActiveView(view)
+  // }
 
   // 10-second tick — keeps elapsed time displays current
   const [tick, setTick] = useState(0) // eslint-disable-line no-unused-vars
@@ -166,70 +166,70 @@ export default function App() {
     />
   )
 
-  // ── Home screen ───────────────────────────────────────────────
-  if (activeView === null) {
-    return (
-      <>
-        <HomeScreen
-          teamNumber={settings.teamNumber}
-          syncStatus={syncStatus}
-          onNavigate={navigate}
-          onOpenSettings={() => setShowSettings(true)}
-        />
-        {settingsModal}
-      </>
-    )
-  }
+  // ── Home screen (commented out — battery app only) ───────────
+  // if (activeView === null) {
+  //   return (
+  //     <>
+  //       <HomeScreen
+  //         teamNumber={settings.teamNumber}
+  //         syncStatus={syncStatus}
+  //         onNavigate={navigate}
+  //         onOpenSettings={() => setShowSettings(true)}
+  //       />
+  //       {settingsModal}
+  //     </>
+  //   )
+  // }
 
   // ── Schedule ──────────────────────────────────────────────────
-  if (activeView === 'schedule') {
-    return <SchedulePanel settings={settings} onClose={goHome} />
-  }
+  // if (activeView === 'schedule') {
+  //   return <SchedulePanel settings={settings} onClose={goHome} />
+  // }
 
   // ── Rankings ──────────────────────────────────────────────────
-  if (activeView === 'rankings') {
-    return <RankingsView settings={settings} onBack={goHome} />
-  }
+  // if (activeView === 'rankings') {
+  //   return <RankingsView settings={settings} onBack={goHome} />
+  // }
 
   // ── Team Lookup ───────────────────────────────────────────────
-  if (activeView === 'teamlookup') {
-    return <TeamLookup settings={settings} onBack={goHome} />
-  }
+  // if (activeView === 'teamlookup') {
+  //   return <TeamLookup settings={settings} onBack={goHome} />
+  // }
 
   // ── Alliance Tracker ──────────────────────────────────────────
-  if (activeView === 'alliance') {
-    return <AllianceTracker settings={settings} onBack={goHome} />
-  }
+  // if (activeView === 'alliance') {
+  //   return <AllianceTracker settings={settings} onBack={goHome} />
+  // }
 
   // ── Robot Checklist ───────────────────────────────────────────
-  if (activeView === 'checklist') {
-    return <RobotChecklist onBack={goHome} />
-  }
+  // if (activeView === 'checklist') {
+  //   return <RobotChecklist onBack={goHome} />
+  // }
 
   // ── Match Notes ───────────────────────────────────────────────
-  if (activeView === 'notes') {
-    return <MatchNotes matchNumber={matchNumber} onBack={goHome} />
-  }
+  // if (activeView === 'notes') {
+  //   return <MatchNotes matchNumber={matchNumber} onBack={goHome} />
+  // }
 
   // ── Scouting ──────────────────────────────────────────────────
-  if (activeView === 'scouting') {
-    return <ScoutingView onBack={goHome} />
-  }
+  // if (activeView === 'scouting') {
+  //   return <ScoutingView onBack={goHome} />
+  // }
 
   // ── OPR / DPR ─────────────────────────────────────────────────
-  if (activeView === 'opr') {
-    return <OPRView settings={settings} onBack={goHome} />
-  }
+  // if (activeView === 'opr') {
+  //   return <OPRView settings={settings} onBack={goHome} />
+  // }
 
   // ── Head to Head ──────────────────────────────────────────────
-  if (activeView === 'headtohead') {
-    return <HeadToHead settings={settings} onBack={goHome} />
-  }
+  // if (activeView === 'headtohead') {
+  //   return <HeadToHead settings={settings} onBack={goHome} />
+  // }
 
   // ── Playoff Bracket ───────────────────────────────────────────
-  if (activeView === 'bracket') {
-    return <PlayoffBracket settings={settings} onBack={goHome} />
-  }
+  // if (activeView === 'bracket') {
+  //   return <PlayoffBracket settings={settings} onBack={goHome} />
+  // }
 
   // ── Battery view ──────────────────────────────────────────────
   return (

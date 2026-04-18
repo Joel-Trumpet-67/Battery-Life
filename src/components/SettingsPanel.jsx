@@ -111,8 +111,8 @@ export default function SettingsPanel({ settings, onSave, onResetAll, onResetSta
             </div>
           </div>
 
-          {/* ── Match Schedule ───────────────────────────────────── */}
-          <div className="setting-divider">📅 Match Schedule</div>
+          {/* ── Match Schedule (commented out — battery app only) ── */}
+          {/* <div className="setting-divider">📅 Match Schedule</div>
 
           <div className="setting-group">
             <label className="setting-label">TBA API Key</label>
@@ -155,10 +155,10 @@ export default function SettingsPanel({ settings, onSave, onResetAll, onResetSta
               Comma-separated team numbers to highlight in the schedule —
               great for tracking potential alliance partners.
             </div>
-          </div>
+          </div> */}
 
-          {/* ── Drive Team ───────────────────────────────────────── */}
-          <div className="setting-divider">👥 Drive Team</div>
+          {/* ── Drive Team (commented out — battery app only) ─────── */}
+          {/* <div className="setting-divider">👥 Drive Team</div>
 
           <div className="setting-group">
             <label className="setting-label">Driver</label>
@@ -194,7 +194,7 @@ export default function SettingsPanel({ settings, onSave, onResetAll, onResetSta
               onChange={e => handleChange('coach', e.target.value)}
               maxLength={30}
             />
-          </div>
+          </div> */}
 
           {/* ── Thresholds ───────────────────────────────────────── */}
           <div className="setting-divider">⏱ Thresholds</div>
